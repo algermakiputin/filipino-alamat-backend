@@ -21,10 +21,12 @@ export default async function handler(
   }
 
   try {
+    const key = process.env.SERVER_SIDE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+    console.log(`key: `, key);
     const jwtClient = new JWT({
       // keyFile: "./service-account.json",
       email: process.env.SERVER_SIDE_CLIENT_EMAIL,
-      key: process.env.SERVER_SIDE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      key: key,
       scopes: ["https://www.googleapis.com/auth/androidpublisher"],
     });
 

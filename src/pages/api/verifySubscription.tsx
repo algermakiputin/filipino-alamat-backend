@@ -66,15 +66,16 @@ export default async function handler(
       expiryTime: Number(response.data.expiryTimeMillis),
       raw: response.data,
     });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(`error: `, error);
-    if (error.response?.data) {
-      return res.status(error.response.status || 500).json({
+    if (error?.response?.data) {
+      return res.status(error?.response?.status || 500).json({
         error: error.response.data.error || "Google API error",
       });
     }
     return res
       .status(500)
-      .json({ error: error.message || "Internal server error" });
+      .json({ error: error?.message || "Internal server error" });
   }
 }

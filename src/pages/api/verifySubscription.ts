@@ -21,7 +21,9 @@ export default async function handler(
   }
 
   try {
-    const key = process.env.SERVER_SIDE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+    const key = String(
+      process.env.SERVER_SIDE_PRIVATE_KEY?.replace(/\\n/g, "\n")
+    );
     console.log(`key: `, key);
     const jwtClient = new JWT({
       // keyFile: "./service-account.json",

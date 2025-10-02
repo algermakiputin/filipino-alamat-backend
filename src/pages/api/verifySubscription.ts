@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
-import path from "path";
 import { JWT } from "google-auth-library";
 
 const PACKAGE_NAME = "com.angalamat";
